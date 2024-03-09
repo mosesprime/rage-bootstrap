@@ -1,3 +1,8 @@
+use rage_bootstrap::{debug, error, info, warn};
+
 fn main() {
-    println!("Hello, world!");
+    debug!("debug {} {}", "1", 2);
+    info!("info");
+    warn!("warn");
+    error!("error");
 }
