@@ -6,6 +6,7 @@ macro_rules! define_punctuation {
     ($($token:literal $name:ident)*) => {
         $(
             #[doc = concat!('`', $token, '`')]
+            #[derive(Debug)]
             pub struct $name;
         )*
 

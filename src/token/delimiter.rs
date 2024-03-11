@@ -2,6 +2,7 @@ macro_rules! define_delimiter {
     ($($name:ident #[$doc:meta])*) => {
         $(
             #[$doc]
+            #[derive(Debug)]
             pub struct $name;
         )*
 

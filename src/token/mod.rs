@@ -90,4 +90,13 @@ macro_rules! Token {
     [..] => { $crate::token::punctuation::DotDot };
     [...] => { $crate::token::punctuation::DotDotDot }; 
     [..=] => { $crate::token::punctuation::DotDotEqual };
+
+    ["("] => { $crate::token::delimiter::Parenthesis };
+    [")"] => { $crate::token::delimiter::Parenthesis };
+    ["["] => { $crate::token::delimiter::SquareBracket };
+    ["]"] => { $crate::token::delimiter::SquareBracket };
+    ["{"] => { $crate::token::delimiter::CurlyBrace };
+    ["}"] => { $crate::token::delimiter::CurlyBrace };
+    ["<"] => { $crate::token::delimiter::AngledBracket };
+    [">"] => { $crate::token::delimiter::AngledBracket };
 }
