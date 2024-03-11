@@ -31,14 +31,14 @@ macro_rules! define_punctuation {
 
 define_punctuation!(
     "!" Exclamation
-    // "
+    // "\"" Quotation
     "#" Pound
     "$" Dollar
     "%" Percent
     "&" Andpersand
-    // '
-    "(" LParen
-    ")" RParen
+    // "\'" Apostrophe
+    //"(" LParen
+    //")" RParen
     "*" Asterisk
     "+" Plus
     "," Comma
@@ -53,11 +53,11 @@ define_punctuation!(
     "?" Question
     "@" At 
     "[" LSquare
-    "\\" Backslash
+    // "\\" Backslash
     "]" RSquare
     "^" Caret
     "_" Underscore
-    // `
+    // "`" Accent
     "{" LCurly
     "|" Pipe
     "}" RCurly
@@ -74,6 +74,6 @@ define_punctuation!(
     "+=" PlusEqual
     "-=" MinusEqual
     ".." DotDot
-    "..=" DotDotEqual
     "..." DotDotDot
+    "..=" DotDotEqual
 );

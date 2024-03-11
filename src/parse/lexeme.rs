@@ -19,7 +19,7 @@ impl Lexeme {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum LexemeKind {
     Whitespace(WhitespaceKind),
     Comment(CommentKind),

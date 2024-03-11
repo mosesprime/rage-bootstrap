@@ -1,15 +1,28 @@
 use std::str::FromStr;
 
-use anyhow::anyhow;
+use anyhow::{anyhow, bail};
+
+use crate::parse::{lexeme::LexemeKind, Parse, ParseResult, Parser};
 
 macro_rules! define_keyword {
     ($($token:literal $name:ident)*) => {
         $(
+            #[derive(Debug)]
             pub struct $name;
 
             impl $name {
                 pub fn as_kind(&self) -> KeywordKind {
                     KeywordKind::$name
+                }
+            }
+
+            impl Parse for $name {
+                fn parse(parser: &mut Parser<'_>) -> ParseResult<Self> {
+                    let lexeme = parser.next().expect("missing lexeme");
+                    if lexeme.kind != LexemeKind::Keyword(KeywordKind::$name) {
+                        bail!("unable to parse keyword: {lexeme:?}");
+                    }            
+                    Ok($name)
                 }
             }
         )*
@@ -26,7 +39,7 @@ macro_rules! define_keyword {
             type Err = anyhow::Error;
             fn from_str(s: &str) -> Result<Self, Self::Err> {
                 match s {
-                    $(concat!('"', $token, '"') => Ok(KeywordKind::$name),)*
+                    $($token => Ok(KeywordKind::$name),)*
                     _ => Err(anyhow!("unable to parse {}", s)),
                 }
             }
@@ -59,3 +72,4 @@ define_keyword!(
     "use" Use
     "while" While
 );
+

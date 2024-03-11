@@ -27,9 +27,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     log::debug!("loading {}", src_path.display());
     let content = std::fs::read_to_string(src_path)?;
 
-    log::debug!("parsing");
     let parser = Parser::new(&content);
-    parser.run();
+    let ast = parser.run()?;
+    log::debug!("ast {:#?}", ast);
 
     log::info!("completed bootstrap in {} seconds", start_time.elapsed()?.as_secs_f64());
     Ok(())

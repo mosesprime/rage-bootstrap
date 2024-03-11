@@ -2,6 +2,7 @@ use std::path::PathBuf;
 
 use source::SourceTree;
 
+pub mod ast;
 pub mod logger;
 pub mod parse;
 pub mod source;
